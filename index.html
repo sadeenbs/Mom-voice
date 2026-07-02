@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>صوت ماما</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<h1>❤️ صوت ماما</h1>
+<div id="sentenceBox">اختاري زر</div>
+
+<div class="grid top">
+<button onclick="showPage('home')">🏠 الرئيسية</button>
+<button onclick="clearSentence()">🗑️ مسح</button>
+<button onclick="toggleDark()">🌙</button>
+</div>
+
+<div id="home" class="page active">
+<h2>اختاري القسم</h2>
+<div class="grid">
+<button onclick="showPage('needs')">💧<span>احتياجات</span></button>
+<button onclick="showPage('pain')">😣<span>الألم</span></button>
+<button onclick="showPage('food')">🍽️<span>أكل وشرب</span></button>
+<button onclick="showPage('feelings')">😊<span>مشاعر</span></button>
+<button onclick="showPage('family')">👨‍👩‍👧<span>العائلة</span></button>
+<button onclick="showPage('emergency')">🚨<span>طوارئ</span></button>
+</div>
+</div>
+
+<div id="needs" class="page"><h2>💧 احتياجات</h2><div class="grid">
+<button onclick="say('أبغى موية')">💧<span>موية</span></button>
+<button onclick="say('أبغى الدواء')">💊<span>دواء</span></button>
+<button onclick="say('أبغى الحمام')">🚽<span>حمام</span></button>
+<button onclick="say('أبغى أنام')">🛏️<span>أنام</span></button>
+<button onclick="say('ارفعوني شوي')">🪑<span>ارفعوني</span></button>
+<button onclick="say('قلبوني على الجنب')">🔄<span>قلبوني</span></button>
+</div></div>
+
+<div id="pain" class="page"><h2>😣 الألم</h2><div class="grid">
+<button onclick="say('عندي ألم في الرأس')">🧠<span>الرأس</span></button>
+<button onclick="say('عندي ألم في الصدر')">🫁<span>الصدر</span></button>
+<button onclick="say('عندي ألم في البطن')">🤢<span>البطن</span></button>
+<button onclick="say('الألم شديد')">💔<span>شديد</span></button>
+</div></div>
+
+<div id="food" class="page"><h2>🍽️ أكل وشرب</h2><div class="grid">
+<button onclick="say('أبغى موية')">💧<span>موية</span></button>
+<button onclick="say('أبغى أكل')">🍽️<span>أكل</span></button>
+<button onclick="say('أبغى عصير')">🧃<span>عصير</span></button>
+<button onclick="say('أحس بغثيان')">🤢<span>غثيان</span></button>
+</div></div>
+
+<div id="feelings" class="page"><h2>😊 مشاعر</h2><div class="grid">
+<button onclick="say('أنا خايفة')">😰<span>خايفة</span></button>
+<button onclick="say('أنا تعبانة')">😔<span>تعبانة</span></button>
+<button onclick="say('شكراً')">🙏<span>شكراً</span></button>
+<button onclick="say('ادعولي')">🤲<span>ادعولي</span></button>
+</div></div>
+
+<div id="family" class="page"><h2>👨‍👩‍👧 العائلة</h2><div class="grid">
+<button onclick="say('أبغى سدين')">👧<span>سدين</span></button>
+<button onclick="say('أحبكم')">❤️<span>أحبكم</span></button>
+</div></div>
+
+<div id="emergency" class="page emergency"><h2>🚨 طوارئ</h2><div class="grid">
+<button onclick="say('ساعدوني')">🆘<span>ساعدوني</span></button>
+<button onclick="say('ما أقدر أتنفس')">😮‍💨<span>تنفس</span></button>
+<button onclick="say('نادي الدكتور')">👨‍⚕️<span>الدكتور</span></button>
+</div></div>
+
+</div>
+<script src="script.js"></script>
+</body></html>
