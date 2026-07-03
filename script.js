@@ -1,1 +1,26 @@
-let current='';function showPage(i){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(i).classList.add('active')}function say(t){current=t;document.getElementById('sentenceBox').innerText=t;if('speechSynthesis'in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';speechSynthesis.speak(u)}}function clearSentence(){current='';document.getElementById('sentenceBox').innerText='اختاري زر'}function toggleDark(){document.body.classList.toggle('dark')}
+let currentSentence = "";
+
+function say(sentence) {
+  currentSentence = sentence;
+  document.getElementById("sentenceBox").innerText = sentence;
+  speakSentence();
+}
+
+function clearSentence() {
+  currentSentence = "";
+  document.getElementById("sentenceBox").innerText = "اختاري زر";
+}
+
+function speakSentence() {
+  if (!currentSentence) return;
+
+  speechSynthesis.cancel();
+
+  let textOnly = currentSentence.replace(/[^\u0600-\u06FF\s]/g, "");
+
+  const speech = new SpeechSynthesisUtterance(textOnly);
+  speech.lang = "ar-SA";
+  speech.rate = 0.75;
+
+  speechSynthesis.speak(speech);
+}
