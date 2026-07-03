@@ -1,75 +1,157 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>صوت ماما</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+<style>
+body{margin:0;font-family:Arial;background:#fff6fb;direction:rtl;text-align:center}
+.app{padding:20px}
+h1{font-size:44px;color:#5c2a45}
+#sentenceBox{background:white;border:4px solid #5c2a45;border-radius:24px;padding:22px;font-size:34px;margin:15px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+button{border:0;border-radius:26px;padding:24px 10px;font-size:42px;font-weight:bold;background:#ffd7e9}
+button span{display:block;font-size:26px;margin-top:8px}
+.page{display:none}
+.page.active{display:block}
+.top button{font-size:24px;background:#d9ecff}
+.emergency button{background:#ffbcbc}
+.yesno button{background:#d8f5dd}
+.dark{background:#1c1c1c;color:white}
+.dark #sentenceBox{color:black}
+</style>
+
 <div class="app">
-<h1>❤️ صوت ماما</h1>
-<div id="sentenceBox">اختاري زر</div>
+  <h1>❤️ صوت ماما</h1>
 
-<div class="grid top">
-<button onclick="showPage('home')">🏠 الرئيسية</button>
-<button onclick="clearSentence()">🗑️ مسح</button>
-<button onclick="toggleDark()">🌙</button>
+  <div id="sentenceBox">اختاري زر</div>
+
+  <div class="grid top">
+    <button onclick="showPage('home')">🏠 الرئيسية</button>
+    <button onclick="clearSentence()">🗑️ مسح</button>
+    <button onclick="speakSentence()">🔊 نطق</button>
+    <button onclick="toggleDark()">🌙 ليل</button>
+  </div>
+
+  <div id="home" class="page active">
+    <h2>اختاري القسم</h2>
+    <div class="grid">
+      <button onclick="showPage('needs')">💧<span>احتياجات</span></button>
+      <button onclick="showPage('pain')">😣<span>الألم</span></button>
+      <button onclick="showPage('food')">🍽️<span>أكل وشرب</span></button>
+      <button onclick="showPage('feelings')">😊<span>مشاعر</span></button>
+      <button onclick="showPage('family')">👨‍👩‍👧<span>العائلة</span></button>
+      <button onclick="showPage('emergency')">🚨<span>طوارئ</span></button>
+    </div>
+  </div>
+
+  <div id="needs" class="page">
+    <h2>💧 احتياجات</h2>
+    <div class="grid">
+      <button onclick="say('💧 أبغى موية')">💧<span>موية</span></button>
+      <button onclick="say('🚽 أبغى الحمام')">🚽<span>حمام</span></button>
+      <button onclick="say('🛏️ أبغى أنام')">🛏️<span>أنام</span></button>
+      <button onclick="say('🪑 ارفعوني شوي')">🪑<span>ارفعوني</span></button>
+      <button onclick="say('🔄 قلبوني على الجنب')">🔄<span>قلبوني</span></button>
+      <button onclick="say('💊 أبغى الدواء')">💊<span>دواء</span></button>
+      <button onclick="say('🧣 أنا بردانة')">🧣<span>بردانة</span></button>
+      <button onclick="say('🔥 أنا حرانة')">🔥<span>حرانة</span></button>
+    </div>
+  </div>
+
+  <div id="pain" class="page">
+    <h2>😣 مكان الألم</h2>
+    <div class="grid">
+      <button onclick="say('🧠 عندي ألم في الرأس')">🧠<span>الرأس</span></button>
+      <button onclick="say('🫁 عندي ألم في الصدر')">🫁<span>الصدر</span></button>
+      <button onclick="say('🤢 عندي ألم في البطن')">🤢<span>البطن</span></button>
+      <button onclick="say('🩹 عندي ألم في الظهر')">🩹<span>الظهر</span></button>
+      <button onclick="say('🤲 عندي ألم في اليد')">🤲<span>اليد</span></button>
+      <button onclick="say('🦵 عندي ألم في الرجل')">🦵<span>الرجل</span></button>
+    </div>
+
+    <h2>شدة الألم</h2>
+    <div class="grid">
+      <button onclick="say('🙂 الألم بسيط')">🙂<span>بسيط</span></button>
+      <button onclick="say('😣 الألم متوسط')">😣<span>متوسط</span></button>
+      <button onclick="say('😭 الألم شديد')">😭<span>شديد</span></button>
+      <button onclick="say('💔 الألم لا يحتمل')">💔<span>لا يحتمل</span></button>
+    </div>
+  </div>
+
+  <div id="food" class="page">
+    <h2>🍽️ أكل وشرب</h2>
+    <div class="grid">
+      <button onclick="say('💧 أبغى موية')">💧<span>موية</span></button>
+      <button onclick="say('🧃 أبغى عصير')">🧃<span>عصير</span></button>
+      <button onclick="say('🍲 أبغى شوربة')">🍲<span>شوربة</span></button>
+      <button onclick="say('☕ أبغى شاهي')">☕<span>شاهي</span></button>
+      <button onclick="say('🍽️ أبغى أكل')">🍽️<span>أكل</span></button>
+      <button onclick="say('🤢 أحس بغثيان')">🤢<span>غثيان</span></button>
+    </div>
+  </div>
+
+  <div id="feelings" class="page">
+    <h2>😊 مشاعر</h2>
+    <div class="grid">
+      <button onclick="say('😊 أنا مرتاحة')">😊<span>مرتاحة</span></button>
+      <button onclick="say('😔 أنا زعلانة')">😔<span>زعلانة</span></button>
+      <button onclick="say('😰 أنا خايفة')">😰<span>خايفة</span></button>
+      <button onclick="say('😴 أنا نعسانة')">😴<span>نعسانة</span></button>
+      <button onclick="say('🙏 شكراً')">🙏<span>شكراً</span></button>
+      <button onclick="say('🤲 ادعولي')">🤲<span>ادعولي</span></button>
+    </div>
+  </div>
+
+  <div id="family" class="page">
+    <h2>👨‍👩‍👧 العائلة</h2>
+    <div class="grid">
+      <button onclick="say('👧 أبغى سدين')">👧<span>سدين</span></button>
+      <button onclick="say('👨 أبغى بابا')">👨<span>بابا</span></button>
+      <button onclick="say('📞 اتصلوا بأحد')">📞<span>اتصلوا</span></button>
+      <button onclick="say('❤️ أحبكم')">❤️<span>أحبكم</span></button>
+      <button onclick="say('لا تروحون عني')">🥺<span>لا تروحون</span></button>
+      <button onclick="say('اجلسوا جنبي')">🤍<span>اجلسوا جنبي</span></button>
+    </div>
+  </div>
+
+  <div id="emergency" class="page emergency">
+    <h2>🚨 طوارئ</h2>
+    <div class="grid">
+      <button onclick="say('🆘 ساعدوني')">🆘<span>ساعدوني</span></button>
+      <button onclick="say('😮‍💨 ما أقدر أتنفس')">😮‍💨<span>تنفس</span></button>
+      <button onclick="say('👨‍⚕️ نادي الدكتور')">👨‍⚕️<span>الدكتور</span></button>
+      <button onclick="say('🚑 اتصلوا بالإسعاف')">🚑<span>الإسعاف</span></button>
+      <button onclick="say('💔 عندي ألم شديد')">💔<span>ألم شديد</span></button>
+      <button onclick="say('🚨 في شيء غلط')">🚨<span>شيء غلط</span></button>
+    </div>
+  </div>
 </div>
 
-<div id="home" class="page active">
-<h2>اختاري القسم</h2>
-<div class="grid">
-<button onclick="showPage('needs')">💧<span>احتياجات</span></button>
-<button onclick="showPage('pain')">😣<span>الألم</span></button>
-<button onclick="showPage('food')">🍽️<span>أكل وشرب</span></button>
-<button onclick="showPage('feelings')">😊<span>مشاعر</span></button>
-<button onclick="showPage('family')">👨‍👩‍👧<span>العائلة</span></button>
-<button onclick="showPage('emergency')">🚨<span>طوارئ</span></button>
-</div>
-</div>
+<script>
+let currentSentence = "";
 
-<div id="needs" class="page"><h2>💧 احتياجات</h2><div class="grid">
-<button onclick="say('أبغى موية')">💧<span>موية</span></button>
-<button onclick="say('أبغى الدواء')">💊<span>دواء</span></button>
-<button onclick="say('أبغى الحمام')">🚽<span>حمام</span></button>
-<button onclick="say('أبغى أنام')">🛏️<span>أنام</span></button>
-<button onclick="say('ارفعوني شوي')">🪑<span>ارفعوني</span></button>
-<button onclick="say('قلبوني على الجنب')">🔄<span>قلبوني</span></button>
-</div></div>
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
 
-<div id="pain" class="page"><h2>😣 الألم</h2><div class="grid">
-<button onclick="say('عندي ألم في الرأس')">🧠<span>الرأس</span></button>
-<button onclick="say('عندي ألم في الصدر')">🫁<span>الصدر</span></button>
-<button onclick="say('عندي ألم في البطن')">🤢<span>البطن</span></button>
-<button onclick="say('الألم شديد')">💔<span>شديد</span></button>
-</div></div>
+function say(sentence){
+  currentSentence = sentence;
+  document.getElementById("sentenceBox").innerText = sentence;
+  speakSentence();
+}
 
-<div id="food" class="page"><h2>🍽️ أكل وشرب</h2><div class="grid">
-<button onclick="say('أبغى موية')">💧<span>موية</span></button>
-<button onclick="say('أبغى أكل')">🍽️<span>أكل</span></button>
-<button onclick="say('أبغى عصير')">🧃<span>عصير</span></button>
-<button onclick="say('أحس بغثيان')">🤢<span>غثيان</span></button>
-</div></div>
+function clearSentence(){
+  currentSentence = "";
+  document.getElementById("sentenceBox").innerText = "اختاري زر";
+}
 
-<div id="feelings" class="page"><h2>😊 مشاعر</h2><div class="grid">
-<button onclick="say('أنا خايفة')">😰<span>خايفة</span></button>
-<button onclick="say('أنا تعبانة')">😔<span>تعبانة</span></button>
-<button onclick="say('شكراً')">🙏<span>شكراً</span></button>
-<button onclick="say('ادعولي')">🤲<span>ادعولي</span></button>
-</div></div>
+function speakSentence(){
+  if(!currentSentence) return;
+  speechSynthesis.cancel();
+  let textOnly = currentSentence.replace(/[^\u0600-\u06FF\s]/g, "");
+  let speech = new SpeechSynthesisUtterance(textOnly);
+  speech.lang = "ar-SA";
+  speech.rate = 0.75;
+  speechSynthesis.speak(speech);
+}
 
-<div id="family" class="page"><h2>👨‍👩‍👧 العائلة</h2><div class="grid">
-<button onclick="say('أبغى سدين')">👧<span>سدين</span></button>
-<button onclick="say('أحبكم')">❤️<span>أحبكم</span></button>
-</div></div>
-
-<div id="emergency" class="page emergency"><h2>🚨 طوارئ</h2><div class="grid">
-<button onclick="say('ساعدوني')">🆘<span>ساعدوني</span></button>
-<button onclick="say('ما أقدر أتنفس')">😮‍💨<span>تنفس</span></button>
-<button onclick="say('نادي الدكتور')">👨‍⚕️<span>الدكتور</span></button>
-</div></div>
-
-</div>
-<script src="script.js"></script>
-</body></html>
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+</script>
